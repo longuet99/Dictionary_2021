@@ -33,7 +33,6 @@ public class TextToSpeech {
 	public TextToSpeech() {
 		try {
 			marytts = new LocalMaryInterface();
-			
 		} catch (MaryConfigurationException ex) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
 		}
@@ -61,9 +60,7 @@ public class TextToSpeech {
 		stopSpeaking();
 		
 		try (AudioInputStream audio = marytts.generateAudio(text)) {
-			
 			// Player is a thread(threads can only run one time) so it can be
-			// used has to be initiated every time
 			tts = new AudioPlayer();
 			tts.setAudio(audio);
 			tts.setGain(gainValue);

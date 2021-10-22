@@ -196,7 +196,6 @@ public class AudioPlayer extends Thread {
 	 * @param fGain
 	 */
 	public void setGain(float fGain) {
-
 		gain = fGain;
 
 		if (line != null && line.isControlSupported(FloatControl.Type.MASTER_GAIN))
