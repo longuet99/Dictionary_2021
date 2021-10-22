@@ -124,7 +124,7 @@ public class AudioPlayer extends Thread {
 	 *            lineListener
 	 * @param outputMode
 	 *            if MONO, force output to be mono; if STEREO, force output to be STEREO; if LEFT_ONLY, play a mono signal over the left channel of a
-	 *            stereo output, or mute the right channel of a stereo signal; if RIGHT_ONLY, do the same with the right output channel.
+	 *            stereo output, or mute the right channel of a stereo signal; if RIGHT_ONLY, do the same with the right.
 	 * @throws IOException
 	 *             IOException
 	 * @throws UnsupportedAudioFileException

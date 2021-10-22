@@ -8,10 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.File;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.List;
 
 public class Main extends Application {
 
