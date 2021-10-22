@@ -9,7 +9,6 @@ import okhttp3.*;
 import java.io.IOException;
 import java.util.Scanner;
 
-
 public class TranslatorAPI {
     public static final Scanner scanner = new Scanner(System.in);
     public static TranslatorAPI TranslationRequest = new TranslatorAPI();
@@ -61,20 +60,16 @@ public class TranslatorAPI {
         tmp+= '"';
         String realres = res.replaceAll(tmp,"");
         return realres;
-
     }
 
     // This function performs a simple POST call to Microsoft Translator Text Endpoint.
     public String makePOSTcalls(String word) throws IOException {
-//        String endline = "\n";
-//        if (word.equals(endline)) return endline;
 
             String ctnt = "[{\n\t\"Text\": \"" + word + "\"\n}]";
             // An RFC 2045 Media Type, appropriate to describe the content type of an HTTP request or response body.
             MediaType mediaType = MediaType.parse("application/json");
 
-            RequestBody requestBody = RequestBody.create(mediaType,
-                    ctnt);
+            RequestBody requestBody = RequestBody.create(mediaType, ctnt);
 
             // An HTTP request. Instances of this class are immutable if their body is null or itself immutable.
             Request dictRequest = new Request.Builder().url(translatorURL).post(requestBody)

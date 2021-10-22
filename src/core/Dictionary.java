@@ -25,17 +25,6 @@ public class Dictionary {
         }
     }
 
-    // show all words in database of wordList.
-//    public void showAllWords() {
-//        for (int i = 0; i < wordList.size(); i++) {
-//            String wd = wordList.get(i).getWord();
-//            String def = wordList.get(i).getDef();
-//            System.out.println(i + 1 + "      | " + wd + "            | " + def);
-//        }
-//    }
-
-    // read in data from .txt file, tab delimiter.
-
     public void insertFromFile(String filename) {
         BufferedReader bufferedReader = null;
         try {

@@ -40,10 +40,11 @@ public class Controller {
     @FXML
     private ListView listview ;
 
-
     TextToSpeech tts = new TextToSpeech();
     SQLiteDatabaseActions actions = new SQLiteDatabaseActions();
 
+    public Controller() {
+    }
 
     public void Submit(ActionEvent event) throws IOException, SQLException {
         String answer = actions.queryforHtml(word.getText());
@@ -53,7 +54,7 @@ public class Controller {
 
     public void translate(ActionEvent event) throws IOException {
         TranslatorAPI translatorAPI = new TranslatorAPI();
-        String answer = translatorAPI.processor(jfxtect.getText()); // the cai nao tra ve string
+        String answer = translatorAPI.processor(jfxtect.getText());
         myWord.setText(answer);
     }
 
@@ -78,15 +79,15 @@ public class Controller {
     public ListView getListview() {
         return listview;
     }
+
     @FXML
     public void updateListView(KeyEvent event) throws  IOException, SQLException{
 
         String www = word.getText();
         ObservableList<String> observableList = FXCollections.observableArrayList(actions.realtimeSearch(www));
         listview.setItems(observableList);
-
-
     }
+
     @FXML public void mouseclick (javafx.scene.input.MouseEvent event) throws IOException,SQLException {
         String anan = event.getSource().toString();
         ListView<String> alist =  (ListView<String>)event.getSource();
@@ -110,7 +111,6 @@ public class Controller {
         word.setText(finale);
         engine.loadContent(actions.queryforHtml(finale));
     }
-
 
     @FXML
     private void handleButtonAction(ActionEvent event) throws Exception {

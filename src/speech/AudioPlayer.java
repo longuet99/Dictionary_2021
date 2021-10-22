@@ -70,10 +70,7 @@ public class AudioPlayer extends Thread {
 	public AudioPlayer(File audioFile) throws IOException, UnsupportedAudioFileException {
 		this.ais = AudioSystem.getAudioInputStream(audioFile);
 	}
-	
-	/**
-	 * @param ais
-	 */
+
 	public AudioPlayer(AudioInputStream ais) {
 		this.ais = ais;
 	}
@@ -127,7 +124,7 @@ public class AudioPlayer extends Thread {
 	 *            lineListener
 	 * @param outputMode
 	 *            if MONO, force output to be mono; if STEREO, force output to be STEREO; if LEFT_ONLY, play a mono signal over the left channel of a
-	 *            stereo output, or mute the right channel of a stereo signal; if RIGHT_ONLY, do the same with the right output channel.
+	 *            stereo output, or mute the right channel of a stereo signal; if RIGHT_ONLY, do the same with the right.
 	 * @throws IOException
 	 *             IOException
 	 * @throws UnsupportedAudioFileException
@@ -199,22 +196,10 @@ public class AudioPlayer extends Thread {
 	 * @param fGain
 	 */
 	public void setGain(float fGain) {
-		
-		// if (line != null)
-		// System.out.println(((FloatControl)
-		// line.getControl(FloatControl.Type.MASTER_GAIN)).getValue())
-		
-		// Set the value
 		gain = fGain;
-		
-		// Better type
+
 		if (line != null && line.isControlSupported(FloatControl.Type.MASTER_GAIN))
 			( (FloatControl) line.getControl(FloatControl.Type.MASTER_GAIN) ).setValue((float) ( 20 * Math.log10(fGain <= 0.0 ? 0.0000 : fGain) ));
-		// OR (Math.log(fGain == 0.0 ? 0.0000 : fGain) / Math.log(10.0))
-		
-		// if (line != null)
-		// System.out.println(((FloatControl)
-		// line.getControl(FloatControl.Type.MASTER_GAIN)).getValue())
 	}
 	
 	@Override

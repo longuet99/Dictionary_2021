@@ -9,6 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+<?import java.awt.Font?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller">
    <Group>
       <children>
@@ -134,7 +135,6 @@
                <Font name="Calibri Bold" size="15.0" />
             </font>
          </JFXButton>
-
       </children>
    </Group>
    <Group layoutX="30.0" layoutY="35.0" />
