@@ -33,16 +33,17 @@ public class TextToSpeech {
 	public TextToSpeech() {
 		try {
 			marytts = new LocalMaryInterface();
+
 		} catch (MaryConfigurationException ex) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	
+
 	//----------------------GENERAL METHODS---------------------------------------------------//
-	
+
 	/**
 	 * Transform text to speech
-	 * 
+	 *
 	 * @param text
 	 *            The text that will be transformed to speech
 	 * @param daemon
@@ -55,12 +56,14 @@ public class TextToSpeech {
 	 *            <b>False</b> The current Thread calling this method will continue freely after calling this method
 	 */
 	public void speak(String text , float gainValue , boolean daemon , boolean join) {
-		
+
 		// Stop the previous player
 		stopSpeaking();
-		
+
 		try (AudioInputStream audio = marytts.generateAudio(text)) {
+
 			// Player is a thread(threads can only run one time) so it can be
+			// used has to be initiated every time
 			tts = new AudioPlayer();
 			tts.setAudio(audio);
 			tts.setGain(gainValue);
@@ -105,7 +108,14 @@ public class TextToSpeech {
 		return marytts;
 	}
 	
-
+	/**
+	 * Return a list of available audio effects for MaryTTS
+	 *
+	 * @return
+	 */
+	public List<AudioEffect> getAudioEffects() {
+		return StreamSupport.stream(AudioEffects.getEffects().spliterator(), false).collect(Collectors.toList());
+	}
 	
 	//----------------------SETTERS---------------------------------------------------//
 	

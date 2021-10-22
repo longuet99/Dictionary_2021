@@ -71,10 +71,13 @@ public class AudioPlayer extends Thread {
 		this.ais = AudioSystem.getAudioInputStream(audioFile);
 	}
 
+	/**
+	 * @param ais
+	 */
 	public AudioPlayer(AudioInputStream ais) {
 		this.ais = ais;
 	}
-	
+
 	/**
 	 * @param audioFile
 	 * @param lineListener
@@ -85,7 +88,7 @@ public class AudioPlayer extends Thread {
 		this.ais = AudioSystem.getAudioInputStream(audioFile);
 		this.lineListener = lineListener;
 	}
-	
+
 	/**
 	 * @param ais
 	 * @param lineListener
@@ -94,7 +97,7 @@ public class AudioPlayer extends Thread {
 		this.ais = ais;
 		this.lineListener = lineListener;
 	}
-	
+
 	/**
 	 * @param audioFile
 	 * @param line
@@ -113,9 +116,9 @@ public class AudioPlayer extends Thread {
 		this.line = line;
 		this.lineListener = lineListener;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param audioFile
 	 *            audioFile
 	 * @param line
@@ -124,7 +127,7 @@ public class AudioPlayer extends Thread {
 	 *            lineListener
 	 * @param outputMode
 	 *            if MONO, force output to be mono; if STEREO, force output to be STEREO; if LEFT_ONLY, play a mono signal over the left channel of a
-	 *            stereo output, or mute the right channel of a stereo signal; if RIGHT_ONLY, do the same with the right.
+	 *            stereo output, or mute the right channel of a stereo signal; if RIGHT_ONLY, do the same with the right output channel.
 	 * @throws IOException
 	 *             IOException
 	 * @throws UnsupportedAudioFileException
@@ -136,9 +139,9 @@ public class AudioPlayer extends Thread {
 		this.lineListener = lineListener;
 		this.outputMode = outputMode;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param ais
 	 *            ais
 	 * @param line
@@ -155,7 +158,7 @@ public class AudioPlayer extends Thread {
 		this.lineListener = lineListener;
 		this.outputMode = outputMode;
 	}
-	
+
 	/**
 	 * @param audio
 	 */
@@ -165,7 +168,7 @@ public class AudioPlayer extends Thread {
 		}
 		this.ais = audio;
 	}
-	
+
 	/**
 	 * Cancel the AudioPlayer which will cause the Thread to exit
 	 */
@@ -175,31 +178,43 @@ public class AudioPlayer extends Thread {
 		}
 		exitRequested = true;
 	}
-	
+
 	/**
 	 * @return The SourceDataLine
 	 */
 	public SourceDataLine getLine() {
 		return line;
 	}
-	
+
 	/**
 	 * Returns the GainValue
 	 */
 	public float getGainValue() {
 		return gain;
 	}
-	
+
 	/**
 	 * Sets Gain value. Line should be opened before calling this method. Linear scale 0.0 <--> 1.0 Threshold Coef. : 1/2 to avoid saturation.
-	 * 
+	 *
 	 * @param fGain
 	 */
 	public void setGain(float fGain) {
+
+		// if (line != null)
+		// System.out.println(((FloatControl)
+		// line.getControl(FloatControl.Type.MASTER_GAIN)).getValue())
+
+		// Set the value
 		gain = fGain;
 
+		// Better type
 		if (line != null && line.isControlSupported(FloatControl.Type.MASTER_GAIN))
 			( (FloatControl) line.getControl(FloatControl.Type.MASTER_GAIN) ).setValue((float) ( 20 * Math.log10(fGain <= 0.0 ? 0.0000 : fGain) ));
+		// OR (Math.log(fGain == 0.0 ? 0.0000 : fGain) / Math.log(10.0))
+
+		// if (line != null)
+		// System.out.println(((FloatControl)
+		// line.getControl(FloatControl.Type.MASTER_GAIN)).getValue())
 	}
 	
 	@Override
