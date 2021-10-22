@@ -52,7 +52,7 @@ public class AudioPlayer extends Thread {
 		/**
 		* 
 		*/
-		PLAYING;
+		PLAYING
 	}
 	
 	/**
@@ -120,7 +120,7 @@ public class AudioPlayer extends Thread {
 	/**
 	 * 
 	 * @param audioFile
-	 *            audiofile
+	 *            audioFile
 	 * @param line
 	 *            line
 	 * @param lineListener

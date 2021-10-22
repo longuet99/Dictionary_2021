@@ -108,14 +108,7 @@ public class TextToSpeech {
 		return marytts;
 	}
 	
-	/**
-	 * Return a list of available audio effects for MaryTTS
-	 * 
-	 * @return
-	 */
-	public List<AudioEffect> getAudioEffects() {
-		return StreamSupport.stream(AudioEffects.getEffects().spliterator(), false).collect(Collectors.toList());
-	}
+
 	
 	//----------------------SETTERS---------------------------------------------------//
 	
