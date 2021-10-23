@@ -18,20 +18,6 @@ public class Main extends Application {
             Parent root = loader.load();
 
             Controller controller = loader.getController();
-
-//            new AnimationTimer() {
-//                public void handle(long currentNanoTime) {
-//                    List<String> list = null;
-//                    try {
-//                        list = controller.actions.realtimeSearch(controller.getWord());
-//                    } catch (SQLException throwables) {
-//                        throwables.printStackTrace();
-//                    }
-//                    ObservableList<String> observableList = FXCollections.observableArrayList(list);
-//                    controller.getListview().setItems(observableList);
-//                }
-//            }.start();
-
             Scene searchScene = new Scene(root);
 
             primaryStage.setTitle("DICTIONARY - 2021");
@@ -42,7 +28,6 @@ public class Main extends Application {
 
         }
     }
-
 
     public static void main(String[] args) {
         launch(args);

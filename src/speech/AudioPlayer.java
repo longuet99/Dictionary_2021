@@ -70,10 +70,7 @@ public class AudioPlayer extends Thread {
 	public AudioPlayer(File audioFile) throws IOException, UnsupportedAudioFileException {
 		this.ais = AudioSystem.getAudioInputStream(audioFile);
 	}
-	
-	/**
-	 * @param ais
-	 */
+
 	public AudioPlayer(AudioInputStream ais) {
 		this.ais = ais;
 	}
@@ -199,22 +196,11 @@ public class AudioPlayer extends Thread {
 	 * @param fGain
 	 */
 	public void setGain(float fGain) {
-		
-		// if (line != null)
-		// System.out.println(((FloatControl)
-		// line.getControl(FloatControl.Type.MASTER_GAIN)).getValue())
-		
-		// Set the value
+
 		gain = fGain;
-		
-		// Better type
+
 		if (line != null && line.isControlSupported(FloatControl.Type.MASTER_GAIN))
 			( (FloatControl) line.getControl(FloatControl.Type.MASTER_GAIN) ).setValue((float) ( 20 * Math.log10(fGain <= 0.0 ? 0.0000 : fGain) ));
-		// OR (Math.log(fGain == 0.0 ? 0.0000 : fGain) / Math.log(10.0))
-		
-		// if (line != null)
-		// System.out.println(((FloatControl)
-		// line.getControl(FloatControl.Type.MASTER_GAIN)).getValue())
 	}
 	
 	@Override
