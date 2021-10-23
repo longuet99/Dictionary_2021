@@ -39,23 +39,22 @@ public class TranslatorAPI {
     public String processor(String toFind) throws IOException {
         String[] splitstr = toFind.split("\n");
         String res = "";
-        for (int i=0; i<splitstr.length; i++){
-            String preprocessedString = TranslationRequest.makePOSTcalls(splitstr[i]);
+        for (String s : splitstr) {
+            String preprocessedString = TranslationRequest.makePOSTcalls(s);
             int notationleft = 14;
             String meaning = "";
             char[] chararr = preprocessedString.toCharArray();
-            for (int j = 0; j < chararr.length; j++) {
-                if (chararr[j] == '"') notationleft--;
+            for (char c : chararr) {
+                if (c == '"') notationleft--;
 
                 if (notationleft == 1) {
-                    meaning += chararr[j];
+                    meaning += c;
                 }
                 if (notationleft == 0) break;
             }
             meaning += '"';
             res += meaning + "\n";
         }
-        int l = res.length();
         String tmp = "";
         tmp+= '"';
         String realres = res.replaceAll(tmp,"");
@@ -65,23 +64,21 @@ public class TranslatorAPI {
     // This function performs a simple POST call to Microsoft Translator Text Endpoint.
     public String makePOSTcalls(String word) throws IOException {
 
-            String ctnt = "[{\n\t\"Text\": \"" + word + "\"\n}]";
-            // An RFC 2045 Media Type, appropriate to describe the content type of an HTTP request or response body.
-            MediaType mediaType = MediaType.parse("application/json");
+        String ctnt = "[{\n\t\"Text\": \"" + word + "\"\n}]";
+        // An RFC 2045 Media Type, appropriate to describe the content type of an HTTP request or response body.
+        MediaType mediaType = MediaType.parse("application/json");
 
-            RequestBody requestBody = RequestBody.create(mediaType, ctnt);
+        RequestBody requestBody = RequestBody.create(mediaType, ctnt);
 
-            // An HTTP request. Instances of this class are immutable if their body is null or itself immutable.
-            Request dictRequest = new Request.Builder().url(translatorURL).post(requestBody)
-                    .addHeader("Ocp-Apim-Subscription-Key", microsoftBingAPIKey).addHeader("Content-type", "application/json").build();
+        // An HTTP request. Instances of this class are immutable if their body is null or itself immutable.
+        Request dictRequest = new Request.Builder().url(translatorURL).post(requestBody)
+                .addHeader("Ocp-Apim-Subscription-Key", microsoftBingAPIKey).addHeader("Content-type", "application/json").build();
 
-            // An HTTP response. Instances of this class are not immutable: the response body is a one-shot value that may be consumed only once and then closed.
-            // All other properties are immutable.
+        // An HTTP response. Instances of this class are not immutable: the response body is a one-shot value that may be consumed only once and then closed.
+        // All other properties are immutable.
 
-            Response servResponse = dictClient.newCall(dictRequest).execute();
+        Response servResponse = dictClient.newCall(dictRequest).execute();
 
-            return servResponse.body().string();
-        }
-
-
+        return servResponse.body().string();
+    }
 }
