@@ -10,7 +10,7 @@
 <?import javafx.scene.text.*?>
 
 <?import java.awt.Font?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller">
    <Group>
       <children>
          <Rectangle arcHeight="5.0" arcWidth="5.0" height="630.0" stroke="BLACK" strokeMiterLimit="5000.0" width="673.0">
@@ -135,7 +135,7 @@
                <Font name="Calibri Bold" size="15.0" />
             </font>
          </JFXButton>
-
+// phan edit data
       </children>
    </Group>
    <Group layoutX="30.0" layoutY="35.0" />
