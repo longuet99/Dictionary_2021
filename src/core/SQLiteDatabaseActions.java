@@ -22,17 +22,6 @@ public class SQLiteDatabaseActions {
         return cnt;
     }
 
-    public void insertFromSQLiteDatabase() throws SQLException {
-        String sql = "SELECT word FROM av";
-        Connection conn = connector();
-        Statement statement = conn.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql);
-
-        while (resultSet.next()) {
-            words.add(resultSet.getString("word"));
-        }
-        Collections.sort(words);
-    }
 
     public String queryforHtml(String toFind) throws SQLException {
         String sql = "SELECT word, html FROM av";
@@ -58,14 +47,6 @@ public class SQLiteDatabaseActions {
         statement.close();
     }
 
-    public void deleteWord(String word) throws SQLException {
-        String sql = "DELETE FROM av WHERE word = ?";
-            Connection connection = connector();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, word);
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
-    }
 
     public String updateWord(String degradedWord, String upgradeWord, String upgradeDescription, String upgradePronounce) throws SQLException {
         String sql = "UPDATE av SET description = ? , " + "pronounce = ? , " + "word = ? , " + "html = ? " + "WHERE word = ?";
