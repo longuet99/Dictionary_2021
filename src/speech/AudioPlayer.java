@@ -110,12 +110,7 @@ public class AudioPlayer extends Thread {
 		this.line = line;
 		this.lineListener = lineListener;
 	}
-	
-	/**
-	 * @param ais
-	 * @param line
-	 * @param lineListener
-	 */
+
 	public AudioPlayer(AudioInputStream ais, SourceDataLine line, LineListener lineListener) {
 		this.ais = ais;
 		this.line = line;

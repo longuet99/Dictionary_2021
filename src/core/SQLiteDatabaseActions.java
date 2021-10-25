@@ -9,6 +9,7 @@ import java.util.List;
 public class SQLiteDatabaseActions {
     public List<String> words = new ArrayList<>();
     private static Connection cnt = null;
+
     public static Connection connector() throws SQLException {
         String url = "jdbc:sqlite:/Users/mvvj2/Desktop/LongPrj/Dictionary_2021/src/dict_hh.db";
         if (cnt == null) {
@@ -36,7 +37,6 @@ public class SQLiteDatabaseActions {
     public String queryforHtml(String toFind) throws SQLException {
         String sql = "SELECT word, html FROM av";
         Connection connection = connector();
-
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
@@ -56,7 +56,6 @@ public class SQLiteDatabaseActions {
         Statement statement = connection.createStatement();
         statement.execute(sql);
         statement.close();
-
     }
 
     public void deleteWord(String word) throws SQLException {
@@ -106,7 +105,6 @@ public class SQLiteDatabaseActions {
         System.out.println(sql);
         Connection conn = this.connector();
         conn.setAutoCommit(false);
-
         Statement statement = conn.createStatement();
         statement.execute(sql);
 
