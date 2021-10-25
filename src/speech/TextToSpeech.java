@@ -71,7 +71,6 @@ public class TextToSpeech {
 			tts.start();
 			if (join)
 				tts.join();
-			
 		} catch (SynthesisException ex) {
 			Logger.getLogger(getClass().getName()).log(Level.WARNING, "Error saying phrase.", ex);
 		} catch (IOException ex) {
