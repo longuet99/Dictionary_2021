@@ -44,6 +44,9 @@ public class Controller {
     TextToSpeech tts = new TextToSpeech();
     SQLiteDatabaseActions actions = new SQLiteDatabaseActions();
 
+    public Controller() {
+    }
+
 
     public void Submit(ActionEvent event) throws IOException, SQLException {
         String answer = actions.queryforHtml(word.getText());
