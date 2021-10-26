@@ -9,7 +9,6 @@ import okhttp3.*;
 import java.io.IOException;
 import java.util.Scanner;
 
-
 public class TranslatorAPI {
     public static final Scanner scanner = new Scanner(System.in);
     public static TranslatorAPI TranslationRequest = new TranslatorAPI();
