@@ -25,8 +25,6 @@ public class Dictionary {
         }
     }
 
-    // read in data from .txt file, tab delimiter.
-
     public void insertFromFile(String filename) {
         BufferedReader bufferedReader = null;
         try {
