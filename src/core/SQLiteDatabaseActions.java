@@ -10,7 +10,7 @@ public class SQLiteDatabaseActions {
     public List<String> words = new ArrayList<>();
     private static Connection cnt = null;
     public static Connection connector() throws SQLException {
-        String url = "jdbc:sqlite:/Users/mvvj2/Desktop/LongPrj/TCDictionary/src/dict_hh.db";
+        String url = "jdbc:sqlite:/Users/mvvj2/Desktop/LongPrj/Dictionary_2021/src/dict_hh.db";
         if (cnt == null) {
             cnt = DriverManager.getConnection(url);
         }
